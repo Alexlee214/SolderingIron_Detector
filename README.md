@@ -9,14 +9,13 @@ Required components:
  * thermoresistor
 
 
-### Current functionalities
+## Current functionalities
 * May 24, 2018, Version 1.0.0
 
-### Future improvements
+## Future improvements
 * 
 
 
-### Appendix
+## Appendix
 *
  -
-# SolderingIron_Detector
