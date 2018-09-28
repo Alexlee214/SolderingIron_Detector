@@ -1,6 +1,6 @@
-const byte thermistor = A1; //pin7
-const byte buzzer = 1; //pin6
-const byte led = 3; //pin2
+const byte thermistor = A0;
+const byte buzzer = 5;
+const byte led = 2;
 
 bool isOn = false;
 
@@ -10,6 +10,7 @@ void setup(){
   pinMode(thermistor, INPUT);
   pinMode(led, OUTPUT);
   pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop(){
@@ -21,10 +22,13 @@ void loop(){
   else{
     offStatus();
   }
+  Serial.print("isOn is : ");
+  Serial.println(isOn);
 }
 
 void checkTemp(){
-  if(analogRead(thermistor) >= 145){
+  Serial.println(analogRead(thermistor));
+  if(analogRead(thermistor) >= 425){
     isOn = true;
   }
   else{
@@ -35,9 +39,9 @@ void checkTemp(){
 
 void onStatus(){
   digitalWrite(led, HIGH);
-  //beep every 6 seconds
-  if(millis() - lastBeeped >= 6000){
-      analogWrite(buzzer, 4);
+  //beep every 10 seconds
+  if(millis() - lastBeeped >= 10000){
+      analogWrite(buzzer, 2);
       delay(200);
       digitalWrite(buzzer, LOW);
       lastBeeped = millis();
